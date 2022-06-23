@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { ProviderContext } from './Api/Context';
+import { App } from './App';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Store } from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ProviderContext>
+      <Provider store={Store}>
+        <App />
+      </Provider>
+    </ProviderContext>
   </React.StrictMode>
 );
 
