@@ -14,13 +14,16 @@ export const Chat = () => {
             setSoat(new Date().getHours())
             setMinut(new Date().getMinutes())
         }, 10)
-        if(objOpen.fname === ''){
+        if (objOpen.fname === '') {
             path('/')
         }
     }, [])
     const setUser = () => {
         path('/')
         dispatch(ShowClose())
+    }
+    const sendMessage = (e) => {
+        e.preventDefault()
     }
     return (
         <>
@@ -55,6 +58,19 @@ export const Chat = () => {
                             <div className="on_close">
                                 <img src="./img/more.svg" alt="" />
                             </div>
+                        </div>
+                        <div className="online_chat">
+
+                        </div>
+                        <div className="chat_footer">
+                            <div className="send_message">
+                                <img src="./img/stice.svg" />
+                                <form onSubmit={sendMessage} className='chat_form'>
+                                    <input type="text" placeholder='Write a message...' />
+                                    <button className='message_btn' type='submit'><img src="./img/send.svg" alt="" /></button>
+                                </form>
+                            </div>
+                            <div className="navgate"></div>
                         </div>
                     </div>
                 </div>
