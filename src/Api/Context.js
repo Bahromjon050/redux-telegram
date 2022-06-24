@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { AddUser, Edit } from "./redux/action";
+import { AddUser, Edit, Show } from "./redux/action";
 
 
 export const DataContext = createContext()
@@ -87,7 +87,7 @@ export const ProviderContext = ({ children }) => {
     }
     return (
         <>
-            <DataContext.Provider value={{ upImg, openM, closeModal, data, openModal, editFun, sendFun, inputFun, minut, setMinut, soat, setSoat, changeIn, setChangeIn, users, setUsers }}>
+            <DataContext.Provider value={{ dispatch, upImg, openM, closeModal, data, openModal, editFun, sendFun, inputFun, minut, setMinut, soat, setSoat, changeIn, setChangeIn, users, setUsers }}>
                 {children}
             </DataContext.Provider>
         </>

@@ -22,3 +22,16 @@ export const Edit = (data) => {
         }
     }
 }
+
+export const Show = (data) => {
+    return {
+        type: 'Show',
+        payload: data
+    }
+}
+
+export const ShowClose = () => {
+    return{
+        type: 'delShow'
+    }
+}

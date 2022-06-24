@@ -1,8 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { DataContext } from '../Context'
+import { useNavigate } from "react-router-dom";
+import { Show } from '../redux/action';
+
 
 export const User = () => {
-  const { upImg, users, openM, closeModal, data, openModal, sendFun, inputFun, minut, setMinut, soat, setSoat, changeIn, setChangeIn } = useContext(DataContext)
+  const { dispatch, upImg, users, openM, closeModal, data, openModal, sendFun, inputFun, minut, setMinut, soat, setSoat, changeIn, setChangeIn } = useContext(DataContext)
   const [fmassiv, setFmassiv] = useState([
     {
       id: 0,
@@ -30,6 +33,10 @@ export const User = () => {
       text: 'Settings'
     },
   ])
+  const path = useNavigate()
+  const setChat = () => {
+    path('/chat')
+  }
   useEffect(() => {
     setInterval(() => {
       setSoat(new Date().getHours())
@@ -39,6 +46,10 @@ export const User = () => {
     //   console.log(e.target);
     // })
   }, [])
+  const ShowImport = (val) => {
+    dispatch(Show(val))
+    setChat()
+  }
   return (
     <div className='telegram'>
       <div className="telegram_body">
@@ -73,7 +84,7 @@ export const User = () => {
             data.length < 0 ? <h1>Ma'lumot yo'q</h1>
               : changeIn === '' ?
                 data.map((val) => (
-                  <div className="card" key={val.id}>
+                  <div className="card" key={val.id} onClick={() => ShowImport(val)}>
                     <div className="cardImg">
                       <img src={val.img} alt="" />
                       <div className="card_body">
@@ -98,7 +109,7 @@ export const User = () => {
                 }).length > 0 ? data.filter((val) => {
                   return val.fname.toLowerCase().indexOf(changeIn.toLowerCase().trim()) !== -1
                 }).map((val) => (
-                  <div className="card" key={val.id}>
+                  <div className="card" key={val.id} onClick={() => ShowImport(val)}>
                     <div className="cardImg">
                       <img src={val.img} alt="" />
                       <div className="card_body">
