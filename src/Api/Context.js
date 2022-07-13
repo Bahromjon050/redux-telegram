@@ -24,8 +24,8 @@ export const ProviderContext = ({ children }) => {
         setUsers({ ...users, [e.target.name]: e.target.value })
     }
     const upImg = (e) => {
-        setUsers({ ...users, img: e.target.files[0] })
-        console.log(e.target.files[0]);
+        // setUsers({ ...users, img: e.target.files[0] })
+        // console.log(e.target.files[0]);
     }
     const openModal = () => {
         setOpenM(!openM)

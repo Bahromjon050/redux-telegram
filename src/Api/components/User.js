@@ -5,7 +5,7 @@ import { Show } from '../redux/action';
 
 
 export const User = () => {
-  const { dispatch, upImg, users, openM, closeModal, data, openModal, sendFun, inputFun, minut, setMinut, soat, setSoat, changeIn, setChangeIn } = useContext(DataContext)
+  const { dispatch, users, openM, closeModal, data, openModal, sendFun, inputFun, minut, setMinut, soat, setSoat, changeIn, setChangeIn } = useContext(DataContext)
   const [fmassiv, setFmassiv] = useState([
     {
       id: 0,
@@ -50,6 +50,9 @@ export const User = () => {
     dispatch(Show(val))
     setChat()
   }
+  const userRes = () => {
+    setChangeIn('')
+  }
   return (
     <div className='telegram'>
       <div className="telegram_body">
@@ -86,7 +89,7 @@ export const User = () => {
                 data.map((val) => (
                   <div className="card" key={val.id} onClick={() => ShowImport(val)}>
                     <div className="cardImg">
-                      <img src={val.img} alt="" />
+                      <img src='./img/u1.png' alt="" />
                       <div className="card_body">
                         <h3 className='user_h1'>{val.fname}</h3>
                         <h5 className='user_p'>I don't know what you're ...</h5>
@@ -111,7 +114,7 @@ export const User = () => {
                 }).map((val) => (
                   <div className="card" key={val.id} onClick={() => ShowImport(val)}>
                     <div className="cardImg">
-                      <img src={val.img} alt="" />
+                      <img src='./img/u1.png' alt="" />
                       <div className="card_body">
                         <h3 className='user_h1'>{val.fname}</h3>
                         <h5 className='user_p'>I don't know what you're ...</h5>
@@ -128,7 +131,7 @@ export const User = () => {
                       </div>
                     </div>
                   </div>
-                )) : <h1 className='user_h1'>Profil topilmadi</h1>
+                )) : <h1 className='user_h1 cards_h1'>Profil topilmadi <img src="./img/x.svg" onClick={userRes} /></h1>
           }
         </div>
         <div className="footer">
@@ -147,7 +150,6 @@ export const User = () => {
         <div className={openM ? "modalAdd activ" : "modalAdd"}>
           <div className={openM ? "modalBody activ" : "modalBody"}>
             <form method="post" className="form" onSubmit={sendFun}>
-              <input type="file" onChange={upImg} name='img' placeholder='password' />
               <label className="all_h3" htmlFor="fname">First name :</label>
               <input type="text" onChange={inputFun} value={users.fname} placeholder="First name" name="fname" className="inputs" />
               <label className="all_h3" htmlFor="lname">First name :</label>

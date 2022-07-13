@@ -35,3 +35,24 @@ export const ShowClose = () => {
         type: 'delShow'
     }
 }
+
+export const Set_text = (data) => {
+    return {
+        type: 'setchat',
+        payload: data
+    }
+}
+
+export const Set_del = (data) => {
+    return {
+        type: 'setdel',
+        payload: data
+    }
+}
+
+export const Set_edit = (data) => {
+    return {
+        type: 'setedit',
+        payload: data
+    }
+}
